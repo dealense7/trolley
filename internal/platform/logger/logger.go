@@ -2,10 +2,11 @@ package logger
 
 import (
 	"fmt"
-	"github.com/natefinch/lumberjack"
 	"os"
 	"storePrices/internal/platform/conf"
 	"time"
+
+	"github.com/natefinch/lumberjack"
 
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
@@ -17,6 +18,7 @@ const (
 	Product ModuleName = "product"
 	Parser  ModuleName = "parser"
 	Worker  ModuleName = "worker"
+	General ModuleName = "general"
 )
 
 type Factory interface {

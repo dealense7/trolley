@@ -1,11 +1,11 @@
 # Makefile for Goose migrations using config/config.yml
 
 # Use yq to extract DB config from YAML
-DB_USER := $(shell yq e '.db.user' config/config.yml)
-DB_PASS := $(shell yq e '.db.password' config/config.yml)
-DB_HOST := $(shell yq e '.db.host' config/config.yml)
-DB_PORT := $(shell yq e '.db.port' config/config.yml)
-DB_NAME := $(shell yq e '.db.name' config/config.yml)
+DB_USER := $(shell yq e '.db.user' config/config.yaml)
+DB_PASS := $(shell yq e '.db.password' config/config.yaml)
+DB_HOST := $(shell yq e '.db.host' config/config.yaml)
+DB_PORT := $(shell yq e '.db.port' config/config.yaml)
+DB_NAME := $(shell yq e '.db.name' config/config.yaml)
 
 # Construct MySQL DSN
 DB_URL := $(DB_USER):$(DB_PASS)@tcp($(DB_HOST):$(DB_PORT))/$(DB_NAME)
@@ -23,6 +23,15 @@ help:
 # Run all pending migrations
 .PHONY: migrate
 migrate:
+	echo "$(DB_URL)"
+	goose -dir $(MIGRATIONS_DIR) mysql "$(DB_URL)" up
+
+# Run all pending migrations
+.PHONY: migrate_fresh
+migrate_fresh:
+	@echo "Rolling back all migrations..."
+	goose -dir $(MIGRATIONS_DIR) mysql "$(DB_URL)" down-to 0
+	@echo "Running all migrations..."
 	goose -dir $(MIGRATIONS_DIR) mysql "$(DB_URL)" up
 
 # Rollback last migration
