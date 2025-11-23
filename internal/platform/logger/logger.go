@@ -17,6 +17,7 @@ type ModuleName string
 const (
 	Product ModuleName = "product"
 	Parser  ModuleName = "parser"
+	Country ModuleName = "country"
 	Worker  ModuleName = "worker"
 	General ModuleName = "general"
 )

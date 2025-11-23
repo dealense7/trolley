@@ -43,21 +43,21 @@ func main() {
 }
 
 func runWorker(s *parser.ParserService, db *sqlx.DB, logFactory logger.Factory, shutdown fx.Shutdowner) {
+	retailers := GetTargets(db, logFactory)
 	log := logFactory.For("worker")
-	targets := GetTargets(db, log)
 
 	go func() {
-		log.Info("worker started", zap.Int("queue_size", len(targets)))
+		log.Info("worker started", zap.Int("queue_size", len(retailers)))
 
-		for _, target := range targets {
-			log.Info("processing job for retailer", zap.String("retailer", target.Name))
+		for _, retailer := range retailers {
+			log.Info("processing job for retailer", zap.String("retailer", retailer.Name))
 
-			for _, store := range target.Stores {
+			for _, store := range retailer.Stores {
 				log.Info("processing job for store", zap.String("city", store.City))
 
 				err := s.ScrapeAndPrint(store)
 				if err != nil {
-					log.Error("scrape failed", zap.String("store", target.Name), zap.Error(err))
+					log.Error("scrape failed", zap.String("store", store.Url), zap.Error(err))
 				}
 			}
 		}

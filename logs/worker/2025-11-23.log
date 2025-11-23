@@ -30,3 +30,16 @@
 {"level":"info","ts":"2025-11-23T21:25:50.137+0400","caller":"parser/mian.go:53","msg":"processing job for retailer","module":"worker","retailer":"Dia"}
 {"level":"info","ts":"2025-11-23T21:25:50.137+0400","caller":"parser/mian.go:56","msg":"processing job for store","module":"worker","city":"MAD"}
 {"level":"info","ts":"2025-11-23T21:25:57.640+0400","caller":"parser/mian.go:67","msg":"all jobs completed","module":"worker"}
+{"level":"info","ts":"2025-11-23T21:53:21.947+0400","caller":"parser/main.go:50","msg":"worker started","module":"worker","queue_size":1}
+{"level":"info","ts":"2025-11-23T21:53:21.947+0400","caller":"parser/main.go:53","msg":"processing job for retailer","module":"worker","retailer":"Dia"}
+{"level":"info","ts":"2025-11-23T21:53:25.302+0400","caller":"parser/main.go:67","msg":"all jobs completed","module":"worker"}
+{"level":"info","ts":"2025-11-23T21:53:53.316+0400","caller":"parser/main.go:50","msg":"worker started","module":"worker","queue_size":1}
+{"level":"info","ts":"2025-11-23T21:53:53.316+0400","caller":"parser/main.go:53","msg":"processing job for retailer","module":"worker","retailer":"Dia"}
+{"level":"info","ts":"2025-11-23T21:53:56.158+0400","caller":"parser/main.go:67","msg":"all jobs completed","module":"worker"}
+{"level":"info","ts":"2025-11-23T21:54:15.410+0400","caller":"parser/main.go:51","msg":"worker started","module":"worker","queue_size":1}
+{"level":"info","ts":"2025-11-23T21:54:15.410+0400","caller":"parser/main.go:54","msg":"processing job for retailer","module":"worker","retailer":"Dia"}
+{"level":"info","ts":"2025-11-23T21:54:20.097+0400","caller":"parser/main.go:69","msg":"all jobs completed","module":"worker"}
+{"level":"info","ts":"2025-11-23T21:55:23.958+0400","caller":"parser/main.go:51","msg":"worker started","module":"worker","queue_size":1}
+{"level":"info","ts":"2025-11-23T21:55:23.959+0400","caller":"parser/main.go:54","msg":"processing job for retailer","module":"worker","retailer":"Dia"}
+{"level":"info","ts":"2025-11-23T21:55:23.959+0400","caller":"parser/main.go:58","msg":"processing job for store","module":"worker","city":"MAD"}
+{"level":"info","ts":"2025-11-23T21:55:31.482+0400","caller":"parser/main.go:69","msg":"all jobs completed","module":"worker"}

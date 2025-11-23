@@ -33,3 +33,13 @@ func (r Retailers) IdList() []int64 {
 	}
 	return list
 }
+
+type Stores []Store
+
+func (s Stores) CountryIdList() []int64 {
+	var list []int64
+	for _, st := range s {
+		list = append(list, st.CountryId)
+	}
+	return list
+}

@@ -2,13 +2,14 @@ package main
 
 import (
 	"storePrices/internal/domain/retailer"
+	"storePrices/internal/platform/logger"
 
 	"github.com/jmoiron/sqlx"
-	"go.uber.org/zap"
 )
 
-func GetTargets(db *sqlx.DB, log *zap.Logger) []retailer.Model {
-	items, _ := retailer.GetRetailersWithStores(db, log)
+func GetTargets(db *sqlx.DB, log logger.Factory) []retailer.Model {
+	r := retailer.NewRepository(db, log)
+	items, _ := r.GetRetailersWithStores()
 
 	return items
 }
