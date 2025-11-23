@@ -4,8 +4,8 @@
 CREATE TABLE currencies
 (
     id     INT AUTO_INCREMENT PRIMARY KEY,
-    code   CHAR(3) UNIQUE,    -- 'USD', 'EUR', 'GBP'
-    symbol VARCHAR(5), -- '$', '€', '£'
+    code   CHAR(3) UNIQUE, -- 'USD', 'EUR', 'GBP'
+    symbol VARCHAR(5),     -- '$', '€', '£'
     name   VARCHAR(50)
 );
 -- +goose StatementEnd

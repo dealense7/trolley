@@ -28,6 +28,7 @@ func main() {
 		fx.Invoke(
 			seeders.SeedCountries,
 			seeders.SeedCurrency,
+			seeders.SeedStores,
 		),
 		fx.Invoke(func(shutdown fx.Shutdowner) {
 			_ = shutdown.Shutdown()

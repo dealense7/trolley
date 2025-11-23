@@ -1,28 +1,23 @@
 package seeders
 
 import (
+	"storePrices/internal/domain/country"
 	"time"
 
 	"github.com/jmoiron/sqlx"
 	"go.uber.org/zap"
 )
 
-type Country struct {
-	Code string
-	Name string
-}
-
 func SeedCountries(db *sqlx.DB, log *zap.Logger) {
-	items := []Country{
-		{Code: "ITA", Name: "Italy"},
-		{Code: "ESP", Name: "Spain"},
-		{Code: "BAR", Name: "Barcelona"},
+	items := []country.Model{
+		{Id: country.Italy, Code: "ITA", Name: "Italy"},
+		{Id: country.Spain, Code: "ESP", Name: "Spain"},
 	}
 
 	start := time.Now()
 	log.Info("Country Seeder Started")
 
-	db.NamedExec(`INSERT INTO countries (code, name) VALUES (:code, :name) ON DUPLICATE KEY UPDATE code = code`, items)
+	db.NamedExec(`INSERT INTO countries (id, code, name) VALUES (:id, :code, :name) ON DUPLICATE KEY UPDATE id = id`, items)
 
 	log.Info("Country Seeder Finished:", zap.String("time", time.Since(start).String()))
 
