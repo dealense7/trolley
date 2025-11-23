@@ -1,0 +1,3 @@
+{"level":"info","ts":"2025-11-23T12:10:11.191+0400","caller":"parser/mian.go:48","msg":"worker started","module":"worker","queue_size":1}
+{"level":"info","ts":"2025-11-23T12:10:11.192+0400","caller":"parser/mian.go:51","msg":"processing job","module":"worker","store":"Dia Madrid (Calle Laguna)"}
+{"level":"info","ts":"2025-11-23T12:10:18.345+0400","caller":"parser/mian.go:61","msg":"all jobs completed","module":"worker"}

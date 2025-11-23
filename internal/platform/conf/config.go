@@ -39,7 +39,9 @@ func (db DBConfig) DSN() string {
 
 func NewConfig() (*Config, error) {
 	viper.SetConfigName("config")
-	viper.AddConfigPath("./configs")
+	viper.SetConfigType("yaml")
+
+	viper.AddConfigPath("./config")
 
 	// 1. Enable Environment Variable Overrides
 	viper.AutomaticEnv()

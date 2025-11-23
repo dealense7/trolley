@@ -15,6 +15,8 @@ type ModuleName string
 
 const (
 	Product ModuleName = "product"
+	Parser  ModuleName = "parser"
+	Worker  ModuleName = "worker"
 )
 
 type Factory interface {
