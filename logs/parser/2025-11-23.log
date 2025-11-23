@@ -1,2 +1,4 @@
 {"level":"info","ts":"2025-11-23T12:10:13.842+0400","caller":"strategies/glovo_api.go:154","msg":"Elements empty for","module":"parser","strategy":"glovo_final","msg":""}
 {"level":"info","ts":"2025-11-23T12:10:13.847+0400","caller":"parser/service.go:59","msg":"--- END BATCH ---","module":"parser","total_items":20}
+{"level":"info","ts":"2025-11-23T21:25:53.440+0400","caller":"strategies/glovo_api.go:156","msg":"Elements empty for","module":"parser","strategy":"glovo_final","msg":""}
+{"level":"info","ts":"2025-11-23T21:25:53.440+0400","caller":"parser/service.go:61","msg":"--- END BATCH ---","module":"parser","total_items":20}

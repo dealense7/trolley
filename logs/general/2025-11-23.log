@@ -123,3 +123,9 @@
 {"level":"info","ts":"2025-11-23T20:28:56.545+0400","caller":"seeders/currency.go:22","msg":"Country Seeder Finished:","module":"general","time":"178.299µs"}
 {"level":"info","ts":"2025-11-23T20:28:56.545+0400","caller":"seeders/store.go:29","msg":"Store Seeder Started","module":"general"}
 {"level":"info","ts":"2025-11-23T20:28:56.556+0400","caller":"seeders/store.go:63","msg":"Store Seeder Finished","module":"general","time":"11.641528ms"}
+{"level":"info","ts":"2025-11-23T20:48:28.349+0400","caller":"seeders/country.go:18","msg":"Country Seeder Started","module":"general"}
+{"level":"info","ts":"2025-11-23T20:48:28.360+0400","caller":"seeders/country.go:22","msg":"Country Seeder Finished:","module":"general","time":"10.937298ms"}
+{"level":"info","ts":"2025-11-23T20:48:28.360+0400","caller":"seeders/currency.go:18","msg":"Currency Seeder Started","module":"general"}
+{"level":"info","ts":"2025-11-23T20:48:28.363+0400","caller":"seeders/currency.go:22","msg":"Country Seeder Finished:","module":"general","time":"3.346637ms"}
+{"level":"info","ts":"2025-11-23T20:48:28.363+0400","caller":"seeders/store.go:29","msg":"Store Seeder Started","module":"general"}
+{"level":"info","ts":"2025-11-23T20:48:28.370+0400","caller":"seeders/store.go:63","msg":"Store Seeder Finished","module":"general","time":"6.340243ms"}

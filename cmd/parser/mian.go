@@ -2,15 +2,16 @@ package main
 
 import (
 	"math/rand"
-	"time"
-
-	"go.uber.org/fx"
-	"go.uber.org/zap"
-
 	"storePrices/internal/domain/parser"
 	"storePrices/internal/domain/parser/strategies"
 	"storePrices/internal/platform/conf"
+	"storePrices/internal/platform/database"
 	"storePrices/internal/platform/logger"
+	"time"
+
+	"github.com/jmoiron/sqlx"
+	"go.uber.org/fx"
+	"go.uber.org/zap"
 )
 
 func main() {
@@ -19,6 +20,7 @@ func main() {
 		fx.Provide(
 			conf.NewConfig,
 			logger.NewFactory,
+			database.NewDatabase,
 		),
 
 		// 2. Provide Service and Strategies separately
@@ -40,23 +42,27 @@ func main() {
 	app.Run()
 }
 
-func runWorker(s *parser.ParserService, logFactory logger.Factory, shutdown fx.Shutdowner) {
+func runWorker(s *parser.ParserService, db *sqlx.DB, logFactory logger.Factory, shutdown fx.Shutdowner) {
 	log := logFactory.For("worker")
-	targets := GetTargets() // Defined in jobs.go
+	targets := GetTargets(db, log)
 
 	go func() {
 		log.Info("worker started", zap.Int("queue_size", len(targets)))
 
 		for _, target := range targets {
-			log.Info("processing job", zap.String("store", target.Name))
+			log.Info("processing job for retailer", zap.String("retailer", target.Name))
 
-			err := s.ScrapeAndPrint(target)
-			if err != nil {
-				log.Error("scrape failed", zap.String("store", target.Name), zap.Error(err))
+			for _, store := range target.Stores {
+				log.Info("processing job for store", zap.String("city", store.City))
+
+				err := s.ScrapeAndPrint(store)
+				if err != nil {
+					log.Error("scrape failed", zap.String("store", target.Name), zap.Error(err))
+				}
 			}
-
-			time.Sleep(time.Duration(2000+rand.Intn(3000)) * time.Millisecond)
 		}
+		// Just to be police
+		time.Sleep(time.Duration(2000+rand.Intn(3000)) * time.Millisecond)
 
 		log.Info("all jobs completed")
 		shutdown.Shutdown()

@@ -2,15 +2,17 @@ package strategies
 
 import (
 	"fmt"
-	"github.com/gocolly/colly/v2"
-	"github.com/tidwall/gjson"
-	"go.uber.org/zap"
 	"regexp"
 	"storePrices/internal/domain/parser"
+	"storePrices/internal/domain/retailer"
 	"storePrices/internal/platform/logger"
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/gocolly/colly/v2"
+	"github.com/tidwall/gjson"
+	"go.uber.org/zap"
 )
 
 type GlovoStrategy struct {
@@ -32,7 +34,7 @@ func (s *GlovoStrategy) CanParse(u string) bool {
 	return strings.Contains(u, "glovoapp.com")
 }
 
-func (s *GlovoStrategy) Parse(target parser.TargetStore) (*[]parser.ScrapedProduct, error) {
+func (s *GlovoStrategy) Parse(target retailer.Store) (*[]parser.ScrapedProduct, error) {
 	items := make([]parser.ScrapedProduct, 0)
 	s.fetchData(&items, "/v4/stores/726/addresses/164859/content/main?nodeType=DEEP_LINK&link=ofertas-black-friday-sc.43611987/drogueria-higiene-y-salsas-c.43611795\\", target)
 
@@ -50,7 +52,7 @@ func (s *GlovoStrategy) Parse(target parser.TargetStore) (*[]parser.ScrapedProdu
 	return &items, nil
 }
 
-func (s *GlovoStrategy) getLink(target parser.TargetStore) ([]string, error) {
+func (s *GlovoStrategy) getLink(target retailer.Store) ([]string, error) {
 	var rawBuilder strings.Builder
 
 	c := NewCollector([]string{"glovoapp.com", "www.glovoapp.com"})
@@ -62,8 +64,8 @@ func (s *GlovoStrategy) getLink(target parser.TargetStore) ([]string, error) {
 		}
 	})
 
-	s.log.Info("visiting", zap.String("url", target.URL))
-	if err := c.Visit(target.URL); err != nil {
+	s.log.Info("visiting", zap.String("url", target.Url))
+	if err := c.Visit(target.Url); err != nil {
 		return nil, err
 	}
 
@@ -105,10 +107,10 @@ func (s *GlovoStrategy) getLink(target parser.TargetStore) ([]string, error) {
 	return cleanMatches, nil
 }
 
-func (g *GlovoStrategy) fetchData(items *[]parser.ScrapedProduct, path string, target parser.TargetStore) {
+func (g *GlovoStrategy) fetchData(items *[]parser.ScrapedProduct, path string, target retailer.Store) {
 	var url string
 
-	// Ensure path is clean before appending
+	// Ensure a path is clean before appending
 	path = strings.TrimSpace(path)
 
 	if strings.HasPrefix(path, "/v4") {
@@ -132,7 +134,7 @@ func (g *GlovoStrategy) fetchData(items *[]parser.ScrapedProduct, path string, t
 		r.Headers.Set("glovo-app-platform", "web")
 		r.Headers.Set("glovo-app-type", "customer")
 		r.Headers.Set("glovo-location-city-code", target.City)
-		r.Headers.Set("glovo-location-country-code", string(target.Country))
+		r.Headers.Set("glovo-location-country-code", target.Country.Code)
 	})
 
 	c.OnResponse(func(r *colly.Response) {

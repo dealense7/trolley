@@ -2,8 +2,10 @@ package parser
 
 import (
 	"fmt"
-	"go.uber.org/zap"
+	"storePrices/internal/domain/retailer"
 	"storePrices/internal/platform/logger"
+
+	"go.uber.org/zap"
 )
 
 type ParserService struct {
@@ -23,16 +25,16 @@ func (s *ParserService) AddStrategy(st Strategy) {
 }
 
 // ScrapeAndPrint just logs the data, no saving
-func (s *ParserService) ScrapeAndPrint(target TargetStore) error {
+func (s *ParserService) ScrapeAndPrint(target retailer.Store) error {
 	var str Strategy
 	for _, st := range s.strategies {
-		if st.CanParse(target.URL) {
+		if st.CanParse(target.Url) {
 			str = st
 			break
 		}
 	}
 	if str == nil {
-		return fmt.Errorf("no strategy found for %s", target.Name)
+		return fmt.Errorf("no strategy found for %s", target.Url)
 	}
 
 	products, err := str.Parse(target)

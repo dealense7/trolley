@@ -1,6 +1,9 @@
 package parser
 
-import "time"
+import (
+	"storePrices/internal/domain/retailer"
+	"time"
+)
 
 type CountryCode string
 
@@ -24,12 +27,5 @@ type ScrapedProduct struct {
 type Strategy interface {
 	Name() string
 	CanParse(url string) bool
-	Parse(target TargetStore) (*[]ScrapedProduct, error)
-}
-
-type TargetStore struct {
-	Name    string
-	Country CountryCode
-	City    string
-	URL     string
+	Parse(target retailer.Store) (*[]ScrapedProduct, error)
 }

@@ -1,3 +1,32 @@
 {"level":"info","ts":"2025-11-23T12:10:11.191+0400","caller":"parser/mian.go:48","msg":"worker started","module":"worker","queue_size":1}
 {"level":"info","ts":"2025-11-23T12:10:11.192+0400","caller":"parser/mian.go:51","msg":"processing job","module":"worker","store":"Dia Madrid (Calle Laguna)"}
 {"level":"info","ts":"2025-11-23T12:10:18.345+0400","caller":"parser/mian.go:61","msg":"all jobs completed","module":"worker"}
+{"level":"error","ts":"2025-11-23T20:47:48.360+0400","caller":"retailer/repository.go:12","msg":"selecting retailers err","module":"worker","error":"missing destination name website_url in *[]retailer.Model"}
+{"level":"error","ts":"2025-11-23T20:48:17.860+0400","caller":"retailer/repository.go:12","msg":"selecting retailers err","module":"worker","error":"missing destination name website_url in *[]retailer.Model"}
+{"level":"error","ts":"2025-11-23T20:48:31.945+0400","caller":"retailer/repository.go:12","msg":"selecting retailers err","module":"worker","error":"sql: Scan error on column index 2, name \"logo_url\": converting NULL to string is unsupported"}
+{"level":"error","ts":"2025-11-23T20:54:01.986+0400","caller":"retailer/repository.go:31","msg":"Selecting Retailers","module":"worker","error":"sql: converting argument $1 type: unsupported type []int64, a slice of int64"}
+{"level":"error","ts":"2025-11-23T20:55:05.356+0400","caller":"retailer/repository.go:31","msg":"Selecting Retailers","module":"worker","error":"sql: converting argument $1 type: unsupported type []int64, a slice of int64"}
+{"level":"info","ts":"2025-11-23T21:22:35.189+0400","caller":"parser/mian.go:50","msg":"worker started","module":"worker","queue_size":1}
+{"level":"info","ts":"2025-11-23T21:22:35.189+0400","caller":"parser/mian.go:53","msg":"processing job for retailer","module":"worker","retailer":"Dia"}
+{"level":"info","ts":"2025-11-23T21:22:39.808+0400","caller":"parser/mian.go:67","msg":"all jobs completed","module":"worker"}
+{"level":"info","ts":"2025-11-23T21:23:09.527+0400","caller":"parser/mian.go:51","msg":"worker started","module":"worker","queue_size":1}
+{"level":"info","ts":"2025-11-23T21:23:09.527+0400","caller":"parser/mian.go:54","msg":"processing job for retailer","module":"worker","retailer":"Dia"}
+{"level":"info","ts":"2025-11-23T21:23:12.701+0400","caller":"parser/mian.go:69","msg":"all jobs completed","module":"worker"}
+{"level":"info","ts":"2025-11-23T21:24:04.998+0400","caller":"parser/mian.go:51","msg":"worker started","module":"worker","queue_size":1}
+{"level":"info","ts":"2025-11-23T21:24:04.998+0400","caller":"parser/mian.go:54","msg":"processing job for retailer","module":"worker","retailer":"Dia"}
+{"level":"info","ts":"2025-11-23T21:24:17.291+0400","caller":"parser/mian.go:50","msg":"worker started","module":"worker","queue_size":1}
+{"level":"info","ts":"2025-11-23T21:24:17.291+0400","caller":"parser/mian.go:53","msg":"processing job for retailer","module":"worker","retailer":"Dia"}
+{"level":"info","ts":"2025-11-23T21:24:17.291+0400","caller":"parser/mian.go:56","msg":"processing job for store","module":"worker","city":"MAD"}
+{"level":"info","ts":"2025-11-23T21:24:42.335+0400","caller":"parser/mian.go:50","msg":"worker started","module":"worker","queue_size":1}
+{"level":"info","ts":"2025-11-23T21:24:42.335+0400","caller":"parser/mian.go:53","msg":"processing job for retailer","module":"worker","retailer":"Dia"}
+{"level":"info","ts":"2025-11-23T21:24:42.335+0400","caller":"parser/mian.go:56","msg":"processing job for store","module":"worker","city":"MAD"}
+{"level":"info","ts":"2025-11-23T21:24:49.752+0400","caller":"parser/mian.go:50","msg":"worker started","module":"worker","queue_size":1}
+{"level":"info","ts":"2025-11-23T21:24:49.752+0400","caller":"parser/mian.go:53","msg":"processing job for retailer","module":"worker","retailer":"Dia"}
+{"level":"info","ts":"2025-11-23T21:24:49.752+0400","caller":"parser/mian.go:56","msg":"processing job for store","module":"worker","city":"MAD"}
+{"level":"info","ts":"2025-11-23T21:25:05.089+0400","caller":"parser/mian.go:50","msg":"worker started","module":"worker","queue_size":1}
+{"level":"info","ts":"2025-11-23T21:25:05.089+0400","caller":"parser/mian.go:53","msg":"processing job for retailer","module":"worker","retailer":"Dia"}
+{"level":"info","ts":"2025-11-23T21:25:05.089+0400","caller":"parser/mian.go:56","msg":"processing job for store","module":"worker","city":"MAD"}
+{"level":"info","ts":"2025-11-23T21:25:50.137+0400","caller":"parser/mian.go:50","msg":"worker started","module":"worker","queue_size":1}
+{"level":"info","ts":"2025-11-23T21:25:50.137+0400","caller":"parser/mian.go:53","msg":"processing job for retailer","module":"worker","retailer":"Dia"}
+{"level":"info","ts":"2025-11-23T21:25:50.137+0400","caller":"parser/mian.go:56","msg":"processing job for store","module":"worker","city":"MAD"}
+{"level":"info","ts":"2025-11-23T21:25:57.640+0400","caller":"parser/mian.go:67","msg":"all jobs completed","module":"worker"}

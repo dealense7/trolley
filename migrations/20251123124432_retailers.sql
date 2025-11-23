@@ -5,7 +5,6 @@ CREATE TABLE retailers
     id          INT AUTO_INCREMENT PRIMARY KEY,
     name        VARCHAR(100) NOT NULL UNIQUE,
     logo_url    TEXT,
-    website_url TEXT,
     created_at  TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 -- +goose StatementEnd
